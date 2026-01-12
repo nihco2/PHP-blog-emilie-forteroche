@@ -7,7 +7,7 @@
 <div class="articleList">
     <?php foreach($articles as $article) { ?>
         <article class="article">
-            <h2><?= $article->getTitle() ?></h2>
+            <h2><?= $article->getTitle() ?> <span class="views">(<?= $article->getViews() ?> vues)</span></h2>
             <span class="quotation">«</span>
             <p><?= $article->getContent(400) ?></p>
             

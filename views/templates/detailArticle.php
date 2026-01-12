@@ -3,6 +3,7 @@
      * Ce template affiche un article et ses commentaires.
      * Il affiche également un formulaire pour ajouter un commentaire.
      */
+    $article->setViews($article->getViews() + 1);
 ?>
 
 <article class="mainArticle">

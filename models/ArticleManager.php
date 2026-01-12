@@ -92,4 +92,21 @@ class ArticleManager extends AbstractEntityManager
         $sql = "DELETE FROM article WHERE id = :id";
         $this->db->query($sql, ['id' => $id]);
     }
+
+    public function setViewsById(int $id, int $views) : void
+    {
+        $sql = "UPDATE article SET views = :views WHERE id = :id";
+        $this->db->query($sql, [
+            'views' => $views,
+            'id' => $id
+        ]);
+    }
+
+    public function getViewsById(int $id) : int
+    {
+        $sql = "SELECT views FROM article WHERE id = :id";
+        $result = $this->db->query($sql, ['id' => $id]);
+        $data = $result->fetch();
+        return $data ? (int)$data['views'] : 0;
+    }
 }
