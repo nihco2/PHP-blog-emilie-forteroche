@@ -109,4 +109,12 @@ class ArticleManager extends AbstractEntityManager
         $data = $result->fetch();
         return $data ? (int)$data['views'] : 0;
     }
+
+    public function getCommentCountById(int $id) : int
+    {
+        $sql = "SELECT COUNT(*) as comment_count FROM comment WHERE id_article = :id";
+        $result = $this->db->query($sql, ['id' => $id]);
+        $data = $result->fetch();
+        return $data ? (int)$data['comment_count'] : 0;
+    }
 }

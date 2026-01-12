@@ -142,4 +142,11 @@
        $id = $this->getId();
        $articleManager->setViewsById($id, $views);
     }
+
+    public function getCommentCount(): int
+    {
+        $articleManager = new ArticleManager();
+        $id = $this->getId();
+        return $articleManager->getCommentCountById($id);
+    }
  }
