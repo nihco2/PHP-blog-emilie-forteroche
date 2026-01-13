@@ -5,7 +5,7 @@
      */
 ?>
 
-<h2>Edition des articles</h2>
+<h2>Edition des articles <a class="submit monitoring" href="index.php?action=monitoring">Monitoring</a></h2>
 
 <div class="adminArticle">
     <?php foreach ($articles as $article) { ?>

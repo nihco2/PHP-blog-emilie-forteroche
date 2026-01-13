@@ -343,6 +343,12 @@ a.info {
     border: 1px solid var(--backgroundColor);
 }
 
+.monitoring {
+    float: right;
+    font-family: 'arial', sans-serif;
+    font-size: 16px;
+}
+
 /** 
  * Footer global de la page.
  */
