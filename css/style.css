@@ -326,6 +326,7 @@ a.info {
 .articleLine div {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .articleLine .title {
@@ -338,9 +339,28 @@ a.info {
     flex-grow: 1;
 }
 
+.adminArticle .views {
+    min-width: 78px;
+    text-align: center;
+}
+
+.adminArticle .commentsCount {
+    min-width: 146px;
+    text-align: center;
+}
+
+.adminArticle .creationDate {
+    min-width: 160px;
+    text-align: center;
+}
+
 .articleLine > div {
     padding: 20px;
     border: 1px solid var(--backgroundColor);
+}
+
+.articleMonitoring:nth-child(odd) {
+    background-color: var(--headerColor);
 }
 
 .monitoring {
