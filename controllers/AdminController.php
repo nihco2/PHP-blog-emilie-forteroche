@@ -33,10 +33,50 @@ class AdminController {
         $articleManager = new ArticleManager();
         $articles = $articleManager->getAllArticles();
 
+        // On trie les articles en fonction du paramètre "sort" dans l'URL.
+        $sort = Utils::request("sort", "date_desc");
+        switch ($sort) {
+            case 'title_asc':
+                usort($articles, fn($a, $b) => strcmp($a->getTitle(), $b->getTitle()));
+                break;
+            case 'title_desc':
+                usort($articles, fn($a, $b) => strcmp($b->getTitle(), $a->getTitle()));
+                break;
+            case 'views_asc':
+                usort($articles, fn($a, $b) => $a->getViews() <=> $b->getViews());
+                break;
+            case 'views_desc':
+                usort($articles, fn($a, $b) => $b->getViews() <=> $a->getViews());
+                break;
+            case 'comments_asc':
+                usort($articles, fn($a, $b) => $a->getCommentCount() <=> $b->getCommentCount());
+                break;
+            case 'comments_desc':
+                usort($articles, fn($a, $b) => $b->getCommentCount() <=> $a->getCommentCount());
+                break;
+            case 'date_asc':
+                usort($articles, fn($a, $b) => $a->getDateCreation() <=> $b->getDateCreation());
+                break;
+            case 'date_desc':
+            default:
+                usort($articles, fn($a, $b) => $b->getDateCreation() <=> $a->getDateCreation());
+                break;
+        }
+
         // On affiche la page de monitoring.
         $view = new View("Monitoring");
         $view->render("monitoring", [
-            'articles' => $articles
+            'articles' => $articles,
+            'sortUrls' => [
+                'titleAsc' => 'index.php?action=monitoring&sort=title_asc',
+                'titleDesc' => 'index.php?action=monitoring&sort=title_desc',
+                'viewsAsc' => 'index.php?action=monitoring&sort=views_asc',
+                'viewsDesc' => 'index.php?action=monitoring&sort=views_desc',
+                'commentsAsc' => 'index.php?action=monitoring&sort=comments_asc',
+                'commentsDesc' => 'index.php?action=monitoring&sort=comments_desc',
+                'dateAsc' => 'index.php?action=monitoring&sort=date_asc',
+                'dateDesc' => 'index.php?action=monitoring&sort=date_desc'
+            ]
         ]);
     }
 

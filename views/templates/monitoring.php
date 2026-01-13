@@ -9,10 +9,22 @@
 
 <div class="adminArticle">
     <div class="articleLine articleMonitoring header">
-        <div class="title">Titre</div>
-        <div>Vues</div>
-        <div>Commentaires</div>
-        <div class="creationDate">Date de création</div>
+        <div class="title">Titre
+            <a href="<?= $sortUrls['titleAsc'] ?>"><span class="up"></span></a>
+            <a href="<?= $sortUrls['titleDesc'] ?>"><span class="down"></span></a>
+        </div>
+        <div class="views">Vues
+            <a href="<?= $sortUrls['viewsAsc'] ?>"><span class="up"></span></a>
+            <a href="<?= $sortUrls['viewsDesc'] ?>"><span class="down"></span></a>
+        </div>
+        <div class="commentsCount">Commentaires
+            <a href="<?= $sortUrls['commentsAsc'] ?>"><span class="up"></span></a>
+            <a href="<?= $sortUrls['commentsDesc'] ?>"><span class="down"></span></a>
+        </div>
+        <div class="creationDate">Date de création
+            <a href="<?= $sortUrls['dateAsc'] ?>"><span class="up"></span></a>
+            <a href="<?= $sortUrls['dateDesc'] ?>"><span class="down"></span></a>
+        </div>
     </div>
     <?php foreach ($articles as $article) { ?>
         <div class="articleLine articleMonitoring">

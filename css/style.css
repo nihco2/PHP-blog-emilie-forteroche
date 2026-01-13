@@ -327,6 +327,7 @@ a.info {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .articleLine .title {
@@ -340,17 +341,17 @@ a.info {
 }
 
 .adminArticle .views {
-    min-width: 78px;
+    min-width: 140px;
     text-align: center;
 }
 
 .adminArticle .commentsCount {
-    min-width: 146px;
+    min-width: 190px;
     text-align: center;
 }
 
 .adminArticle .creationDate {
-    min-width: 160px;
+    min-width: 190px;
     text-align: center;
 }
 
@@ -368,6 +369,29 @@ a.info {
     font-family: 'arial', sans-serif;
     font-size: 16px;
 }
+
+.articleLine .up,
+.articleLine .down {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border: solid white;
+  border-width: 1px 1px 0 0;
+  position: absolute;
+  right: 10px;
+  top: 20px;
+}
+
+.up {
+  transform: rotate(-45deg);
+  margin-bottom: 10px;
+}
+
+.down {
+  transform: rotate(135deg);
+  margin-top: 10px;
+}
+
 
 /** 
  * Footer global de la page.
