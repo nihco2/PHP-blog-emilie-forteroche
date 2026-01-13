@@ -14,8 +14,7 @@
                 $commentCount = $article->getCommentCount();
                 echo $commentCount;
                 $commentCount > 1 ? print ' commentaires' : print ' commentaire';
-            ?>
-            )</span></h2>
+            ?>)</span></h2>
             <span class="quotation">«</span>
             <p><?= $article->getContent(400) ?></p>
             
