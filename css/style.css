@@ -269,6 +269,7 @@ a.info {
 .comments li {
     display: flex;
     margin-bottom: 20px;
+    position: relative;
 }
 
 .comments .smiley {
@@ -276,7 +277,17 @@ a.info {
     align-items: flex-start;
     line-height: 0.7;
     font-size: 60px;
-    color: var(--quoteColor);
+}
+
+.comments .deleteComment {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 14px;
+    color: white;
+    background-color: var(--commentColor);
+    padding: 10px;
+    font-weight: bold;
 }
 
 /* On redéfinit certaines parties du "info" pour l'affichage dans les commentaires */

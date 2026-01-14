@@ -3,6 +3,18 @@
 class CommentController 
 {
     /**
+     * Vérifie que l'utilisateur est connecté.
+     * @return void
+     */
+    private function checkIfUserIsConnected() : void
+    {
+        // On vérifie que l'utilisateur est connecté.
+        if (!isset($_SESSION['user'])) {
+            Utils::redirect("connectionForm");
+        }
+    }
+
+    /**
      * Ajoute un commentaire.
      * @return void
      */
@@ -43,5 +55,33 @@ class CommentController
 
         // On redirige vers la page de l'article.
         Utils::redirect("showArticle", ['id' => $idArticle]);
+    }
+
+    /**
+     * Suppression d'un commentaire.
+     * @return void
+     */
+    public function deleteComment() : void
+    {
+        $this->checkIfUserIsConnected();
+
+        // Récupération de l'id du commentaire à supprimer.
+        $id = Utils::request("id");
+        if (empty($id)) {
+            throw new Exception("L'identifiant du commentaire est manquant.");
+        }
+        // On récupère le commentaire.
+        $commentManager = new CommentManager();
+        $comment = $commentManager->getCommentById($id);
+        if (!$comment) {
+            throw new Exception("Le commentaire demandé n'existe pas.");
+        }
+        // On supprime le commentaire.
+        $result = $commentManager->deleteComment($id);
+        if (!$result) {
+            throw new Exception("Une erreur est survenue lors de la suppression du commentaire.");
+        }
+        // On redirige vers la page de l'article.
+        Utils::redirect("showArticle", ['id' => $comment->getIdArticle()]);
     }
 }
